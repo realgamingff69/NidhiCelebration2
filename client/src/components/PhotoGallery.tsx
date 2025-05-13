@@ -57,7 +57,7 @@ export default function PhotoGallery() {
   return (
     <div 
       id="imageGallery" 
-      className="h-[calc(100vh-16rem)] overflow-hidden relative max-w-full"
+      className="h-[calc(100vh-20rem)] md:h-[calc(100vh-16rem)] overflow-hidden relative max-w-full"
       onMouseEnter={pauseAutoAdvance}
       onMouseLeave={resumeAutoAdvance}
     >
@@ -66,10 +66,10 @@ export default function PhotoGallery() {
         style={{ transform: `translateX(-${currentIndex * 100}%)`, transition: 'transform 0.5s ease' }}
       >
         {galleryImages.map((image, index) => (
-          <div key={index} className="min-w-full h-full relative">
+          <div key={index} className="min-w-full h-full relative flex items-center justify-center">
             <img 
               src={image.url} 
-              className="w-full h-full object-contain" 
+              className="max-h-full w-auto object-contain" 
               alt={image.caption} 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end">
