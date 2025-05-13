@@ -16,14 +16,12 @@ export default function CardFront() {
             <span className="ribbon-content">Special!</span>
           </div>
           
-          <div className="mb-8">
-            <svg className="w-40 h-40 md:w-52 md:h-52 mx-auto" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm0 384c-97.2 0-176-78.8-176-176S158.8 80 256 80s176 78.8 176 176-78.8 176-176 176z" fill="#FF5E85"/>
-              <path d="M256 144c-61.8 0-112 50.2-112 112s50.2 112 112 112 112-50.2 112-112-50.2-112-112-112zm0 192c-44.1 0-80-35.9-80-80s35.9-80 80-80 80 35.9 80 80-35.9 80-80 80z" fill="#8A4FFF"/>
-              <path d="M256 240c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24z" fill="#FFD700"/>
-              <path d="M256 128v32M256 352v32M128 256h32M352 256h32" stroke="#FF5E85" strokeWidth="16" strokeLinecap="round"/>
-              <path d="M181.3 181.3l22.6 22.6M308.1 308.1l22.6 22.6M181.3 330.7l22.6-22.6M308.1 203.9l22.6-22.6" stroke="#8A4FFF" strokeWidth="16" strokeLinecap="round"/>
-            </svg>
+          <div className="mb-4">
+            <img 
+              src="/images/nidhi/photo2.jpg" 
+              alt="Nidhi" 
+              className="w-48 h-48 object-cover rounded-full border-4 border-primary shadow-lg mx-auto"
+            />
           </div>
           
           <div className="my-auto">
