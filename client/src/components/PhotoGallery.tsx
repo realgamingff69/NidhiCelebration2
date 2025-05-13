@@ -66,15 +66,15 @@ export default function PhotoGallery() {
         style={{ transform: `translateX(-${currentIndex * 100}%)`, transition: 'transform 0.5s ease' }}
       >
         {galleryImages.map((image, index) => (
-          <div key={index} className="min-w-full h-full relative flex items-center justify-end pb-16 px-4">
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1/3 z-10">
-              <p className="text-white font-dancing text-xl p-4 text-left">{image.caption}</p>
-            </div>
+          <div key={index} className="min-w-full h-full relative flex flex-col items-center justify-center pb-16">
             <img 
               src={image.url} 
-              className="max-h-[80vh] w-auto object-contain max-w-[65%]" 
+              className="w-[85%] md:w-auto h-[65vh] md:h-[75vh] object-contain" 
               alt={image.caption} 
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end">
+              <p className="text-white font-dancing text-xl p-4 text-center w-full">{image.caption}</p>
+            </div>
           </div>
         ))}
       </div>
