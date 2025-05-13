@@ -163,6 +163,16 @@
   100% { transform: translateY(100vh) rotate(360deg); }
 }
 
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes card-unfold {
+  0% { transform: scale(0.95) rotateY(0deg); }
+  100% { transform: scale(1) rotateY(180deg); }
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
@@ -173,4 +183,8 @@
 
 .animate-confetti {
   animation: confetti 5s ease-in-out forwards;
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
 }
