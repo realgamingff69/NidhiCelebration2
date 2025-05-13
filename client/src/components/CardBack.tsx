@@ -77,7 +77,7 @@ export default function CardBack() {
           </div>
           
           {/* Photo gallery - below the message on mobile and desktop */}
-          <div className="w-full h-[300px] md:h-[350px] overflow-hidden">
+          <div className="w-full h-[400px] md:h-[350px] overflow-y-auto">
             <PhotoGallery />
           </div>
         </div>

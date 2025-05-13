@@ -57,7 +57,7 @@ export default function PhotoGallery() {
   return (
     <div 
       id="imageGallery" 
-      className="h-[calc(100vh-12rem)] md:h-[calc(100vh-16rem)] overflow-y-auto relative max-w-full"
+      className="h-[calc(100vh-8rem)] md:h-[calc(100vh-16rem)] overflow-y-auto relative max-w-full"
       onMouseEnter={pauseAutoAdvance}
       onMouseLeave={resumeAutoAdvance}
     >
