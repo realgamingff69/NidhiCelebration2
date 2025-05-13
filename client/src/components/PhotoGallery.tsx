@@ -67,14 +67,14 @@ export default function PhotoGallery() {
       >
         {galleryImages.map((image, index) => (
           <div key={index} className="min-w-full h-full relative flex flex-col items-center justify-center pb-16">
+            <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-black/50 to-transparent flex items-start z-10">
+              <p className="text-white font-dancing text-xl md:text-2xl p-4 text-center w-full">{image.caption}</p>
+            </div>
             <img 
               src={image.url} 
-              className="w-[85%] md:w-auto h-[65vh] md:h-[75vh] object-contain" 
+              className="w-[85%] md:w-auto h-[65vh] md:h-[75vh] object-contain mt-12" 
               alt={image.caption} 
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end z-10">
-              <p className="text-white font-dancing text-xl md:text-2xl p-4 text-center w-full bg-black/30">{image.caption}</p>
-            </div>
           </div>
         ))}
       </div>
