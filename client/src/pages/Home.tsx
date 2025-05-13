@@ -25,14 +25,12 @@ export default function Home() {
   
   // Handle card click
   const handleCardClick = () => {
-    if (!isCardOpen) {
-      setIsCardOpen(true);
-      // Auto-play the birthday song when card is opened
-      if (!playing) {
-        toggle();
-      }
-    } else {
-      setIsCardOpen(false);
+    console.log("Card clicked, current state:", isCardOpen);
+    setIsCardOpen(!isCardOpen);
+      
+    // Auto-play the birthday song when card is opened
+    if (!isCardOpen && !playing) {
+      toggle();
     }
   };
 

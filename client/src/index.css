@@ -89,19 +89,24 @@
 
 /* Card flip animation styles */
 .card-outer {
+  -webkit-perspective: 1500px;
   perspective: 1500px;
 }
 
 .card-inner {
+  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
+  -webkit-transition: transform 1s;
   transition: transform 1s;
 }
 
 .card-open {
+  -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
 
 .card-front, .card-back {
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   position: absolute;
   top: 0;
@@ -111,6 +116,7 @@
 }
 
 .card-back {
+  -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
 
