@@ -4,27 +4,21 @@ import PhotoGallery from "./PhotoGallery";
 
 export default function CardBack() {
   return (
-    <div className="card-back bg-white rounded-xl overflow-hidden">
+    <div className="bg-white rounded-xl overflow-hidden">
       <div className="h-full w-full flex flex-col">
         {/* Header with decoration */}
-        <motion.div 
+        <div 
           className="w-full bg-gradient-to-r from-primary/30 to-secondary/20 py-4 px-6 flex items-center justify-center"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
         >
           <Heart className="text-primary text-2xl animate-pulse mr-2" />
           <h2 className="text-3xl font-dancing text-primary">For My Dearest Nidhi</h2>
-        </motion.div>
+        </div>
         
         {/* Message content */}
         <div className="flex flex-col md:flex-row h-[calc(100%-5rem)] overflow-hidden">
           {/* Left column: message */}
-          <motion.div 
+          <div 
             className="w-full md:w-1/2 p-6 md:p-8 overflow-y-auto relative"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
           >
             {/* Birthday Candle */}
             <div className="absolute -top-10 right-4 md:right-8 w-20 h-48 flex flex-col items-center justify-start pointer-events-none">
@@ -39,10 +33,7 @@ export default function CardBack() {
               </div>
             </div>
             
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+            <div
               className="bg-gradient-to-br from-secondary/10 to-primary/5 rounded-xl p-6 mb-6"
             >
               <p className="font-playfair italic text-lg text-dark/80 mb-2">On your special day...</p>
@@ -66,20 +57,17 @@ export default function CardBack() {
               
               <p className="font-dancing text-2xl text-primary mt-6">With all my heart,</p>
               <p className="font-playfair italic text-xl">Your Love</p>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
           
           {/* Right column: photos */}
-          <motion.div 
-            className="w-full md:w-1/2 rounded-xl overflow-hidden"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+          <div 
+            className="w-full md:w-1/2 rounded-xl overflow-hidden h-full"
           >
-            <div className="relative h-full">
+            <div className="h-full">
               <PhotoGallery />
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>
