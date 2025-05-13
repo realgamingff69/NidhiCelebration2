@@ -72,8 +72,8 @@ export default function PhotoGallery() {
               className="w-[85%] md:w-auto h-[65vh] md:h-[75vh] object-contain" 
               alt={image.caption} 
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end">
-              <p className="text-white font-dancing text-xl p-4 text-center w-full">{image.caption}</p>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end z-10">
+              <p className="text-white font-dancing text-xl md:text-2xl p-4 text-center w-full bg-black/30">{image.caption}</p>
             </div>
           </div>
         ))}
