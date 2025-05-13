@@ -75,14 +75,14 @@ export default function Home() {
             <Heart className="w-5 h-5" />
           </div>
           
-          {/* Card content with conditional rendering */}
-          <div className="w-full max-w-4xl mx-auto my-8">
+          {/* Card content with conditional rendering - using mobile-optimized height */}
+          <div className="w-full max-w-4xl mx-auto my-4 md:my-8">
             {isCardOpen ? (
-              <div className="w-full h-[600px] md:h-[500px] shadow-2xl rounded-xl overflow-hidden">
+              <div className="w-full h-[80vh] max-h-[700px] shadow-2xl rounded-xl overflow-hidden">
                 <CardBack />
               </div>
             ) : (
-              <div className="w-full h-[600px] md:h-[500px] shadow-2xl rounded-xl overflow-hidden">
+              <div className="w-full h-[80vh] max-h-[700px] shadow-2xl rounded-xl overflow-hidden">
                 <CardFront />
               </div>
             )}
