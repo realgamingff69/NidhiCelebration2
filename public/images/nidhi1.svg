@@ -1,0 +1,52 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#FFEBF1"/>
+  
+  <!-- Simple shape-based illustration of a beautiful girl -->
+  <g transform="translate(140, 100)">
+    <!-- Hair -->
+    <path d="M120,160 C180,150 170,40 120,20 C70,40 60,150 120,160" fill="#422800"/>
+    
+    <!-- Face -->
+    <ellipse cx="120" cy="80" rx="50" ry="60" fill="#FFD1C7"/>
+    
+    <!-- Eyes -->
+    <g transform="translate(100, 70)">
+      <ellipse cx="0" cy="0" rx="8" ry="5" fill="#422800"/>
+      <circle cx="0" cy="-2" r="2" fill="white"/>
+    </g>
+    <g transform="translate(140, 70)">
+      <ellipse cx="0" cy="0" rx="8" ry="5" fill="#422800"/>
+      <circle cx="0" cy="-2" r="2" fill="white"/>
+    </g>
+    
+    <!-- Smile -->
+    <path d="M110,100 Q120,110 130,100" stroke="#F55A8F" stroke-width="3" fill="none"/>
+    
+    <!-- Nose -->
+    <path d="M118,85 Q122,90 120,92" stroke="#F55A8F" stroke-width="1.5" fill="none"/>
+    
+    <!-- Bindi -->
+    <circle cx="120" cy="55" r="3" fill="#F55A8F"/>
+    
+    <!-- Dress -->
+    <path d="M70,160 C70,200 170,200 170,160" fill="#F55A8F"/>
+    
+    <!-- Flowers in hair -->
+    <g transform="translate(85, 40)">
+      <circle cx="0" cy="0" r="8" fill="#FFD700"/>
+      <circle cx="3" cy="3" r="3" fill="#FF5E85"/>
+    </g>
+    <g transform="translate(155, 40)">
+      <circle cx="0" cy="0" r="8" fill="#FFD700"/>
+      <circle cx="-3" cy="3" r="3" fill="#FF5E85"/>
+    </g>
+  </g>
+  
+  <!-- Name -->
+  <text x="200" y="320" text-anchor="middle" font-family="Dancing Script, cursive" font-size="36" fill="#F55A8F">Nidhi</text>
+  
+  <!-- Heart decorations -->
+  <path d="M50,360 C40,345 20,355 30,370 C40,385 60,375 50,360" fill="#F55A8F"/>
+  <path d="M350,360 C360,345 380,355 370,370 C360,385 340,375 350,360" fill="#F55A8F"/>
+</svg>

@@ -8,7 +8,7 @@ import { Music, VolumeX, Heart } from "lucide-react";
 export default function Home() {
   const [isCardOpen, setIsCardOpen] = useState(false);
   const [sparklesActive, setSparklesActive] = useState(false);
-  const { playing, toggle } = useAudio("https://cdn.pixabay.com/download/audio/2022/03/23/audio_8f1585b80d.mp3");
+  const { playing, toggle } = useAudio("https://assets.mixkit.co/sfx/preview/mixkit-sweet-happy-slow-piano-melody-726.mp3");
 
   // Auto-play sparkles animation when card is opened
   useEffect(() => {

@@ -1,0 +1,89 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F3E7FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFD1E8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bgGradient)"/>
+  
+  <!-- Decorative border -->
+  <rect x="10" y="10" width="380" height="380" fill="none" stroke="#8A4FFF" stroke-width="5" stroke-dasharray="15,10" rx="10" ry="10"/>
+  
+  <!-- Girl with flowers -->
+  <g transform="translate(140, 70)">
+    <!-- Hair -->
+    <path d="M120,170 C190,160 190,40 120,20 C50,40 50,160 120,170" fill="#2C1B01"/>
+    
+    <!-- Face -->
+    <ellipse cx="120" cy="80" rx="55" ry="65" fill="#FFDBC9"/>
+    
+    <!-- Eyes with slight tilt for Indian features -->
+    <g transform="translate(100, 70)">
+      <ellipse cx="0" cy="0" rx="9" ry="5" fill="#422800"/>
+      <circle cx="0" cy="-2" r="2" fill="white"/>
+    </g>
+    <g transform="translate(140, 70)">
+      <ellipse cx="0" cy="0" rx="9" ry="5" fill="#422800"/>
+      <circle cx="0" cy="-2" r="2" fill="white"/>
+    </g>
+    
+    <!-- Eyebrows -->
+    <path d="M90,60 Q100,55 110,58" stroke="#422800" stroke-width="2.5" fill="none"/>
+    <path d="M130,58 Q140,55 150,60" stroke="#422800" stroke-width="2.5" fill="none"/>
+    
+    <!-- Smile with dimples -->
+    <path d="M105,105 Q120,115 135,105" stroke="#F55A8F" stroke-width="2.5" fill="none"/>
+    <circle cx="105" cy="105" r="2" fill="#FFDBC9" stroke="#F55A8F" stroke-width="1"/>
+    <circle cx="135" cy="105" r="2" fill="#FFDBC9" stroke="#F55A8F" stroke-width="1"/>
+    
+    <!-- Nose -->
+    <path d="M118,83 Q122,90 120,95" stroke="#F55A8F" stroke-width="1.5" fill="none"/>
+    
+    <!-- Bindi -->
+    <circle cx="120" cy="50" r="3" fill="#F55A8F"/>
+    
+    <!-- Traditional Indian outfit -->
+    <path d="M70,170 C70,220 170,220 170,170" fill="#8A4FFF"/>
+    
+    <!-- Jewelry - earrings -->
+    <circle cx="75" cy="85" r="5" fill="#FFD700"/>
+    <circle cx="165" cy="85" r="5" fill="#FFD700"/>
+    
+    <!-- Flowers in hair - decorative elements -->
+    <g transform="translate(75, 40)">
+      <circle cx="0" cy="0" r="10" fill="#FF5E85"/>
+      <circle cx="0" cy="0" r="5" fill="#FFD700"/>
+    </g>
+    <g transform="translate(165, 40)">
+      <circle cx="0" cy="0" r="10" fill="#FF5E85"/>
+      <circle cx="0" cy="0" r="5" fill="#FFD700"/>
+    </g>
+  </g>
+  
+  <!-- Name with stylized text -->
+  <text x="200" y="320" text-anchor="middle" font-family="Dancing Script, cursive" font-size="42" fill="#8A4FFF" stroke="#FF5E85" stroke-width="1">Nidhi</text>
+  
+  <!-- Decorative elements -->
+  <g transform="translate(40, 300)">
+    <path d="M0,0 C5,-10 15,-10 20,0 C25,10 35,10 40,0" stroke="#8A4FFF" stroke-width="3" fill="none"/>
+  </g>
+  <g transform="translate(320, 300)">
+    <path d="M0,0 C5,-10 15,-10 20,0 C25,10 35,10 40,0" stroke="#8A4FFF" stroke-width="3" fill="none"/>
+  </g>
+  
+  <!-- Star elements -->
+  <g transform="translate(50, 50)">
+    <path d="M0,0 L5,15 L-12,5 L12,5 L-5,15 Z" fill="#FFD700"/>
+  </g>
+  <g transform="translate(350, 50)">
+    <path d="M0,0 L5,15 L-12,5 L12,5 L-5,15 Z" fill="#FFD700"/>
+  </g>
+  <g transform="translate(50, 350)">
+    <path d="M0,0 L5,15 L-12,5 L12,5 L-5,15 Z" fill="#FFD700"/>
+  </g>
+  <g transform="translate(350, 350)">
+    <path d="M0,0 L5,15 L-12,5 L12,5 L-5,15 Z" fill="#FFD700"/>
+  </g>
+</svg>
