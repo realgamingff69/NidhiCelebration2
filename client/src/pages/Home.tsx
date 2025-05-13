@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import BirthdayCard from "@/components/BirthdayCard";
+import CardFront from "@/components/CardFront";
+import CardBack from "@/components/CardBack";
 import SpecialEffects from "@/components/SpecialEffects";
 import { useAudio } from "@/hooks/useAudio";
 import { Music, VolumeX, Heart } from "lucide-react";
@@ -58,7 +59,7 @@ export default function Home() {
         </div>
       )}
       
-      {/* Birthday Card Component */}
+      {/* Birthday Card Component - Using direct rendering instead of the BirthdayCard component */}
       <div 
         onClick={handleCardClick}
         className="cursor-pointer transition-transform duration-300 hover:scale-[1.02] w-full max-w-4xl mx-auto relative"
@@ -67,9 +68,18 @@ export default function Home() {
           <Heart className="w-5 h-5" />
         </div>
         
-        <BirthdayCard 
-          isOpen={isCardOpen}
-        />
+        {/* Using direct conditional rendering instead of CSS transforms */}
+        <div className="w-full max-w-4xl mx-auto my-8">
+          {isCardOpen ? (
+            <div className="w-full h-[600px] md:h-[500px] shadow-2xl rounded-xl overflow-hidden">
+              <CardBack />
+            </div>
+          ) : (
+            <div className="w-full h-[600px] md:h-[500px] shadow-2xl rounded-xl overflow-hidden">
+              <CardFront />
+            </div>
+          )}
+        </div>
       </div>
       
       {/* Footer with love note */}
