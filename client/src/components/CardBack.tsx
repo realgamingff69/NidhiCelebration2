@@ -32,7 +32,7 @@ export default function CardBack() {
         </div>
         
         {/* Content with scrollable view - single section for mobile */}
-        <div className="h-[calc(100%-3.75rem)] overflow-y-auto relative z-10">
+        <div className="flex-1 overflow-y-auto relative z-10 max-h-[calc(100vh-12rem)]">
           {/* Message section */}
           <div className="w-full p-3 md:p-6 relative">
             {/* Birthday Candle */}

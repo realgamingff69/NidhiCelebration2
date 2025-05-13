@@ -57,7 +57,7 @@ export default function PhotoGallery() {
   return (
     <div 
       id="imageGallery" 
-      className="h-full overflow-hidden relative"
+      className="h-[calc(100vh-16rem)] overflow-hidden relative"
       onMouseEnter={pauseAutoAdvance}
       onMouseLeave={resumeAutoAdvance}
     >
