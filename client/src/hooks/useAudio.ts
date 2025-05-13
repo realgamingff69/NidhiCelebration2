@@ -7,12 +7,21 @@ export function useAudio(url: string) {
   useEffect(() => {
     // Create audio element
     const audioElement = new Audio(url);
-    audioElement.loop = true;
+    audioElement.loop = false; // Don't loop birthday song
+    audioElement.volume = 0.7; // Slightly reduce volume
     setAudio(audioElement);
+    
+    // Add ended event listener to update playing state
+    const handleEnded = () => {
+      setPlaying(false);
+    };
+    
+    audioElement.addEventListener('ended', handleEnded);
 
     // Clean up
     return () => {
       if (audioElement) {
+        audioElement.removeEventListener('ended', handleEnded);
         audioElement.pause();
         audioElement.src = "";
       }
@@ -25,6 +34,10 @@ export function useAudio(url: string) {
     if (playing) {
       audio.pause();
     } else {
+      // Reset audio to beginning if it already played
+      if (audio.currentTime > 0) {
+        audio.currentTime = 0;
+      }
       audio.play().catch(e => console.log('Audio play failed:', e));
     }
     

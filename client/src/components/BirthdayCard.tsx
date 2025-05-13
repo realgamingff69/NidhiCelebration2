@@ -4,11 +4,9 @@ import CardBack from "./CardBack";
 
 interface BirthdayCardProps {
   isOpen: boolean;
-  onOpen: () => void;
-  onClose: () => void;
 }
 
-export default function BirthdayCard({ isOpen, onOpen, onClose }: BirthdayCardProps) {
+export default function BirthdayCard({ isOpen }: BirthdayCardProps) {
   return (
     <div className="card-outer w-full max-w-4xl mx-auto my-8">
       <motion.div 
@@ -17,11 +15,11 @@ export default function BirthdayCard({ isOpen, onOpen, onClose }: BirthdayCardPr
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        {/* Card Front */}
-        <CardFront onOpen={onOpen} />
+        {/* Card Front - shown when closed */}
+        <CardFront />
         
-        {/* Card Back */}
-        <CardBack onClose={onClose} />
+        {/* Card Back - shown when open */}
+        <CardBack />
       </motion.div>
     </div>
   );
