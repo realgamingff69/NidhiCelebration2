@@ -24,14 +24,18 @@ export default function Home() {
     }
   }, [isCardOpen]);
   
-  // Handle card click
+  // Handle card click - only allow opening, not closing
   const handleCardClick = () => {
     console.log("Card clicked, current state:", isCardOpen);
-    setIsCardOpen(!isCardOpen);
+    
+    // Only open the card if it's closed, don't allow closing by clicking
+    if (!isCardOpen) {
+      setIsCardOpen(true);
       
-    // Auto-play the birthday song when card is opened
-    if (!isCardOpen && !playing) {
-      toggle();
+      // Auto-play the birthday song when card is opened
+      if (!playing) {
+        toggle();
+      }
     }
   };
 
@@ -59,27 +63,43 @@ export default function Home() {
         </div>
       )}
       
-      {/* Birthday Card Component - Using direct rendering instead of the BirthdayCard component */}
-      <div 
-        onClick={handleCardClick}
-        className="cursor-pointer transition-transform duration-300 hover:scale-[1.02] w-full max-w-4xl mx-auto relative"
-      >
-        <div className="absolute -top-4 -right-4 z-10 bg-primary text-white h-10 w-10 rounded-full flex items-center justify-center shadow-lg animate-pulse">
-          <Heart className="w-5 h-5" />
+      {/* Birthday Card Component with different behavior based on open state */}
+      <div className="w-full max-w-4xl mx-auto relative">
+        {/* Card wrapper - only clickable when card is closed */}
+        <div 
+          onClick={isCardOpen ? undefined : handleCardClick}
+          className={`transition-transform duration-300 ${isCardOpen ? '' : 'cursor-pointer hover:scale-[1.02]'} w-full max-w-4xl mx-auto relative`}
+        >
+          {/* Heart decoration */}
+          <div className="absolute -top-4 -right-4 z-10 bg-primary text-white h-10 w-10 rounded-full flex items-center justify-center shadow-lg animate-pulse">
+            <Heart className="w-5 h-5" />
+          </div>
+          
+          {/* Card content with conditional rendering */}
+          <div className="w-full max-w-4xl mx-auto my-8">
+            {isCardOpen ? (
+              <div className="w-full h-[600px] md:h-[500px] shadow-2xl rounded-xl overflow-hidden">
+                <CardBack />
+              </div>
+            ) : (
+              <div className="w-full h-[600px] md:h-[500px] shadow-2xl rounded-xl overflow-hidden">
+                <CardFront />
+              </div>
+            )}
+          </div>
         </div>
         
-        {/* Using direct conditional rendering instead of CSS transforms */}
-        <div className="w-full max-w-4xl mx-auto my-8">
-          {isCardOpen ? (
-            <div className="w-full h-[600px] md:h-[500px] shadow-2xl rounded-xl overflow-hidden">
-              <CardBack />
-            </div>
-          ) : (
-            <div className="w-full h-[600px] md:h-[500px] shadow-2xl rounded-xl overflow-hidden">
-              <CardFront />
-            </div>
-          )}
-        </div>
+        {/* Close button - only visible when card is open */}
+        {isCardOpen && (
+          <button 
+            onClick={() => setIsCardOpen(false)}
+            className="absolute -top-5 -right-5 z-30 bg-white text-primary hover:bg-primary hover:text-white p-2 rounded-full shadow-lg transition-all duration-300"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        )}
       </div>
       
       {/* Footer with love note */}

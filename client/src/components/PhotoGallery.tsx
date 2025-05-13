@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { motion } from "framer-motion";
 import { galleryImages } from "@/lib/photos";
 
 export default function PhotoGallery() {
@@ -17,13 +16,22 @@ export default function PhotoGallery() {
     setCurrentIndex(newIndex);
   };
   
-  const nextImage = () => showImage(currentIndex + 1);
-  const prevImage = () => showImage(currentIndex - 1);
+  const nextImage = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    showImage(currentIndex + 1);
+  };
+  
+  const prevImage = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    showImage(currentIndex - 1);
+  };
   
   // Auto-advance gallery
   useEffect(() => {
     intervalRef.current = setInterval(() => {
-      nextImage();
+      showImage(currentIndex + 1);
     }, 5000);
     
     return () => {
@@ -42,14 +50,14 @@ export default function PhotoGallery() {
   
   const resumeAutoAdvance = () => {
     intervalRef.current = setInterval(() => {
-      nextImage();
+      showImage(currentIndex + 1);
     }, 5000);
   };
   
   return (
     <div 
       id="imageGallery" 
-      className="h-full overflow-hidden"
+      className="h-full overflow-hidden relative"
       onMouseEnter={pauseAutoAdvance}
       onMouseLeave={resumeAutoAdvance}
     >
@@ -61,44 +69,44 @@ export default function PhotoGallery() {
           <div key={index} className="min-w-full h-full relative">
             <img 
               src={image.url} 
-              className="w-full h-full object-cover" 
+              className="w-full h-full object-contain md:object-cover" 
               alt={image.caption} 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end">
-              <p className="text-white font-dancing text-xl p-4">{image.caption}</p>
+              <p className="text-white font-dancing text-xl p-4 text-center w-full">{image.caption}</p>
             </div>
           </div>
         ))}
       </div>
       
-      {/* Gallery controls */}
-      <div className="absolute inset-x-0 top-1/2 transform -translate-y-1/2 flex justify-between px-4">
-        <motion.button 
+      {/* Gallery controls - now with larger, more visible buttons */}
+      <div className="absolute inset-x-0 top-1/2 transform -translate-y-1/2 flex justify-between z-10 px-2">
+        <button 
           onClick={prevImage}
-          className="bg-white/70 hover:bg-white text-primary w-10 h-10 rounded-full flex items-center justify-center shadow-md transition-all duration-300"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          className="bg-white/70 hover:bg-white text-primary w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110"
         >
-          <ChevronLeft />
-        </motion.button>
-        <motion.button 
+          <ChevronLeft size={24} />
+        </button>
+        <button 
           onClick={nextImage}
-          className="bg-white/70 hover:bg-white text-primary w-10 h-10 rounded-full flex items-center justify-center shadow-md transition-all duration-300"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          className="bg-white/70 hover:bg-white text-primary w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110"
         >
-          <ChevronRight />
-        </motion.button>
+          <ChevronRight size={24} />
+        </button>
       </div>
       
       {/* Image indicators */}
-      <div className="absolute bottom-4 inset-x-0 flex justify-center gap-2">
+      <div className="absolute bottom-4 inset-x-0 flex justify-center gap-2 z-10">
         {galleryImages.map((_, index) => (
-          <span 
+          <button 
             key={index}
-            onClick={() => showImage(index)}
-            className={`w-3 h-3 rounded-full cursor-pointer transition-all duration-300 ${
-              index === currentIndex ? 'bg-white/70' : 'bg-white/40'
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              showImage(index);
+            }}
+            className={`w-4 h-4 rounded-full cursor-pointer transition-all duration-300 ${
+              index === currentIndex ? 'bg-white scale-125' : 'bg-white/40'
             }`}
           />
         ))}
