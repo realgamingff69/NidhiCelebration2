@@ -57,7 +57,7 @@ export default function PhotoGallery() {
   return (
     <div 
       id="imageGallery" 
-      className="h-[calc(100vh-16rem)] overflow-hidden relative"
+      className="h-[calc(100vh-16rem)] overflow-hidden relative max-w-full"
       onMouseEnter={pauseAutoAdvance}
       onMouseLeave={resumeAutoAdvance}
     >
@@ -69,7 +69,7 @@ export default function PhotoGallery() {
           <div key={index} className="min-w-full h-full relative">
             <img 
               src={image.url} 
-              className="w-full h-full object-contain md:object-cover" 
+              className="w-full h-full object-contain" 
               alt={image.caption} 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end">
