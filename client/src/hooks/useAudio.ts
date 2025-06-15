@@ -33,15 +33,27 @@ export function useAudio(url: string) {
     
     if (playing) {
       audio.pause();
+      setPlaying(false);
     } else {
       // Reset audio to beginning if it already played
       if (audio.currentTime > 0) {
         audio.currentTime = 0;
       }
-      audio.play().catch(e => console.log('Audio play failed:', e));
+      
+      // Try to play with better error handling
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setPlaying(true);
+            console.log('Audio started playing successfully');
+          })
+          .catch(e => {
+            console.log('Audio play failed:', e);
+            setPlaying(false);
+          });
+      }
     }
-    
-    setPlaying(!playing);
   };
 
   return { playing, toggle };
