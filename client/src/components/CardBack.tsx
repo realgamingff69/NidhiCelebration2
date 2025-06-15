@@ -72,7 +72,7 @@ export default function CardBack() {
               </div>
               
               <p className="font-dancing text-xl md:text-2xl text-[#60a5fa] mt-4 md:mt-6">With all my heart,</p>
-              <p className="font-playfair italic text-lg md:text-xl text-[#93c5fd]">Your Love</p>
+              <p className="font-playfair italic text-lg md:text-xl text-[#93c5fd]">Your Crazy Lover🥴</p>
             </div>
           </div>
           
