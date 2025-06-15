@@ -36,13 +36,10 @@ export default function Home() {
     if (!isCardOpen && !isAnimating) {
       setIsAnimating(true);
       
-      // Force start the birthday song when card is opened
-      // This ensures audio plays after user interaction
-      setTimeout(() => {
-        if (!playing) {
-          toggle();
-        }
-      }, 100);
+      // Immediately try to start audio on user click
+      if (!playing) {
+        toggle();
+      }
       
       // Set a delay before changing the state (to allow animation)
       setTimeout(() => {
