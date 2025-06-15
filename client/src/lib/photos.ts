@@ -1,8 +1,9 @@
+
 // Gallery images with real photos of Nidhi
 export const galleryImages = [
   {
     url: "/images/nidhi/photo2.jpg",
-    caption: "Beautiful Nidhi in Red"
+    caption: "Nidhi and her lovely Mom in car"
   },
   {
     url: "/images/nidhi/photo3.jpg",
@@ -34,10 +35,10 @@ export const galleryImages = [
   },
   {
     url: "/images/nidhi/photo9.jpg",
-    caption: "Nidhi and her lovely Mom in car"
+    caption: "New Beautiful Moment"
   },
   {
     url: "/images/nidhi/photo10.jpg",
-    caption: "Beautiful Mirror Selfie"
+    caption: "Another Sweet Memory"
   }
 ];
