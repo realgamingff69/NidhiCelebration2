@@ -34,10 +34,10 @@ export const galleryImages = [
   },
   {
     url: "/images/nidhi/photo9.jpg",
-    caption: "New Beautiful Moment"
+    caption: "Nidhi and her lovely Mom in car"
   },
   {
     url: "/images/nidhi/photo10.jpg",
-    caption: "Another Sweet Memory"
+    caption: "Beautiful Mirror Selfie"
   }
 ];
