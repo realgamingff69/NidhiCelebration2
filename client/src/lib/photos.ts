@@ -31,5 +31,13 @@ export const galleryImages = [
   {
     url: "/images/nidhi/photo8.jpg",
     caption: "Sweet Little Nidhi"
+  },
+  {
+    url: "/images/nidhi/photo9.jpg",
+    caption: "Nidhi and her lovely Mom"
+  },
+  {
+    url: "/images/nidhi/photo10.jpg",
+    caption: "Beautiful Mirror Selfie"
   }
 ];
