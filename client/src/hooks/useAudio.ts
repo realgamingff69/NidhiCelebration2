@@ -1,97 +1,72 @@
-import { useState, useEffect } from "react";
+import { useState, useCallback } from "react";
 
-export function useAudio(url: string) {
-  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
+export function useAudio(url?: string) {
   const [playing, setPlaying] = useState(false);
 
-  useEffect(() => {
-    // Create audio element
-    const audioElement = new Audio(url);
-    audioElement.loop = false; // Don't loop birthday song
-    audioElement.volume = 0.7; // Slightly reduce volume
-    audioElement.preload = 'auto'; // Preload audio
-    audioElement.crossOrigin = 'anonymous'; // Handle CORS
-    setAudio(audioElement);
-    
-    // Add event listeners
-    const handleEnded = () => {
-      setPlaying(false);
-    };
-    
-    const handleCanPlay = () => {
-      console.log('Audio can play');
-    };
-    
-    const handleError = (e: Event) => {
-      console.log('Audio error:', e);
-      setPlaying(false);
-    };
-    
-    audioElement.addEventListener('ended', handleEnded);
-    audioElement.addEventListener('canplay', handleCanPlay);
-    audioElement.addEventListener('error', handleError);
-
-    // Clean up
-    return () => {
-      if (audioElement) {
-        audioElement.removeEventListener('ended', handleEnded);
-        audioElement.removeEventListener('canplay', handleCanPlay);
-        audioElement.removeEventListener('error', handleError);
-        audioElement.pause();
-        audioElement.src = "";
+  const playMelody = useCallback(() => {
+    // Create a simple audio context with a generated birthday tune
+    const createAudioContext = () => {
+      try {
+        const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+        return audioContext;
+      } catch (e) {
+        console.log('Web Audio API not supported');
+        return null;
       }
     };
-  }, [url]);
 
-  const toggle = () => {
-    if (!audio) {
-      console.log('No audio element available');
-      return;
-    }
-    
-    if (playing) {
-      audio.pause();
+    // Simple birthday melody frequencies (Happy Birthday)
+    const melodyNotes = [
+      261.63, 261.63, 293.66, 261.63, 349.23, 329.63, // Happy Birthday to you
+      261.63, 261.63, 293.66, 261.63, 392.00, 349.23, // Happy Birthday to you
+      261.63, 261.63, 523.25, 440.00, 349.23, 329.63, 293.66, // Happy Birthday dear...
+      466.16, 466.16, 440.00, 349.23, 392.00, 349.23 // Happy Birthday to you
+    ];
+
+    const audioContext = createAudioContext();
+    if (!audioContext) return;
+
+    const noteLength = 0.5; // Duration of each note in seconds
+
+    const playNote = (frequency: number, duration: number, delay: number) => {
+      setTimeout(() => {
+        if (audioContext.state === 'closed') return;
+        
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+        oscillator.type = 'sine';
+        
+        gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+        
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + duration);
+      }, delay);
+    };
+
+    melodyNotes.forEach((note, index) => {
+      playNote(note, noteLength, index * noteLength * 1000);
+    });
+
+    // Set playing to false when melody ends
+    setTimeout(() => {
       setPlaying(false);
-      console.log('Audio paused');
+    }, melodyNotes.length * noteLength * 1000);
+  }, []);
+
+  const toggle = useCallback(() => {
+    if (!playing) {
+      setPlaying(true);
+      playMelody();
     } else {
-      // Reset audio to beginning if it already played
-      if (audio.currentTime > 0) {
-        audio.currentTime = 0;
-      }
-      
-      console.log('Attempting to play audio...');
-      
-      // Force play the audio
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
-            setPlaying(true);
-            console.log('Audio started playing successfully');
-          })
-          .catch(e => {
-            console.log('Audio play failed:', e);
-            console.log('Audio ready state:', audio.readyState);
-            console.log('Audio network state:', audio.networkState);
-            setPlaying(false);
-            
-            // Try alternative approach - create new audio element
-            try {
-              const newAudio = new Audio(audio.src);
-              newAudio.volume = 0.7;
-              newAudio.play()
-                .then(() => {
-                  console.log('Fallback audio play successful');
-                  setPlaying(true);
-                })
-                .catch(err => console.log('Fallback audio failed:', err));
-            } catch (err) {
-              console.log('Fallback creation failed:', err);
-            }
-          });
-      }
+      setPlaying(false);
     }
-  };
+  }, [playing, playMelody]);
 
   return { playing, toggle };
 }

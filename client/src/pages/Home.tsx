@@ -11,8 +11,8 @@ export default function Home() {
   const [isAnimating, setIsAnimating] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
   
-  // Piano slowed version of birthday music
-  const { playing, toggle } = useAudio("https://assets.mixkit.co/sfx/preview/mixkit-sweet-happy-slow-piano-melody-726.mp3");
+  // Generated birthday melody
+  const { playing, toggle } = useAudio();
 
   // Auto-play sparkles animation when card is opened
   useEffect(() => {
